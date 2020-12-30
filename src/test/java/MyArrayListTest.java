@@ -5,8 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MyArrayListTest {
 
     @Test
-    void retrieveElementPutIn() {
-
+    void retrievesElementPutIn() {
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
         myArrayList.add(1);
 
