@@ -1,4 +1,3 @@
-import com.sun.deploy.util.JVMParameters;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
