@@ -3,6 +3,7 @@ package arraysAndStrings;
 public class MyHashTable<K, V> {
 
     public static final int ARRAY_LENGTH = 2;
+    @SuppressWarnings("unchecked")
     private final Entry<K, V>[] entries = new Entry[ARRAY_LENGTH];
 
     public V get(K key) {
