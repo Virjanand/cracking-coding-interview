@@ -15,7 +15,7 @@ public class MyArrayList<T> {
 
     public void add(T value) {
         if (isValuesArrayAtMaxCapacity()) {
-            resizeValuesArray();
+            expandValuesArray();
         }
         addValueToValuesArray(value);
     }
@@ -28,7 +28,7 @@ public class MyArrayList<T> {
         return values.length == size;
     }
 
-    private void resizeValuesArray() {
+    private void expandValuesArray() {
         T[] temp = (T[]) new Object[size * 2];
         System.arraycopy(values, 0, temp, 0, values.length);
         values = temp;
