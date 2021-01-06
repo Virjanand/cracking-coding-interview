@@ -13,6 +13,17 @@ public class UniqueLetterTest {
             "aa, false",
             "abcbd, false"
     })
+    void testWithnlognRuntime(String letters, boolean isOnlyUniqueLetters) {
+        UniqueLetter uniqueLetter = new UniqueLetter(letters);
+        assertThat(uniqueLetter.testWithnlognRuntime()).isEqualTo(isOnlyUniqueLetters);
+    }
+
+    @ParameterizedTest(name = "Does \"{0}\" have only unique letters -> {1}")
+    @CsvSource({
+            "a, true",
+            "aa, false",
+            "abcbd, false"
+    })
     void testWithLinearRuntime(String letters, boolean isOnlyUniqueLetters) {
         UniqueLetter uniqueLetter = new UniqueLetter(letters);
         assertThat(uniqueLetter.testWithLinearRuntime()).isEqualTo(isOnlyUniqueLetters);
