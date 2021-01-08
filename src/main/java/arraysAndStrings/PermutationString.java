@@ -8,15 +8,12 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class PermutationString {
+
     private String reference;
 
     public PermutationString(String reference) {
 
         this.reference = reference;
-    }
-
-    private static Character convertToChar(int i) {
-        return (char) i;
     }
 
     public boolean isPermutationOfInNLogNTime(String compareTo) {
@@ -58,6 +55,10 @@ public class PermutationString {
         return reference.chars()
                 .mapToObj(PermutationString::convertToChar)
                 .collect(groupingBy(Character::charValue, counting()));
+    }
+
+    private static Character convertToChar(int i) {
+        return (char) i;
     }
 
     private void reduceCountOfLetterInCharacterCount(Map<Character, Long> characterCount, char compareToLetter) {
