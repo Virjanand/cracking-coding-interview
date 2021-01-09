@@ -1,4 +1,4 @@
-package arraysAndStrings;
+package chapter1ArraysAndStrings;
 
 public class MyStringBuilder {
     private char[] letters;
