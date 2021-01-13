@@ -15,7 +15,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    void canStoreMultipleElements() {
+    void storesMultipleElements() {
         MyLinkedList<String> myLinkedList = new MyLinkedList<>();
         myLinkedList.add("test");
         myLinkedList.add("test2");
@@ -25,10 +25,28 @@ public class MyLinkedListTest {
     }
 
     @Test
-    void canStoreElementOfAnyType() {
+    void storesElementOfGivenType() {
         MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
         myLinkedList.add(1);
 
         assertThat(myLinkedList.get(0)).isEqualTo(1);
+    }
+
+    @Test
+    void findsIfElementExists() {
+        MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        myLinkedList.add("test");
+        myLinkedList.add("test2");
+        myLinkedList.add("test3");
+
+        assertThat(myLinkedList.contains("test2")).isTrue();
+    }
+
+    @Test
+    void findsIfElementDoesNotExists() {
+        MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        myLinkedList.add("test");
+
+        assertThat(myLinkedList.contains("test2")).isFalse();
     }
 }
