@@ -47,6 +47,23 @@ public class MyLinkedList<E> {
         return false;
     }
 
+    public void delete(E element) {
+        Node<E> currentNode = firstNode;
+        Node<E> previousNode = null;
+        do {
+            if (currentNode.getValue().equals(element)) {
+                if (previousNode != null) {
+                    previousNode.setNextNode(currentNode.getNextNode());
+                } else {
+                    firstNode = currentNode.getNextNode();
+                }
+                break;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.getNextNode();
+        } while (currentNode != null);
+    }
+
     private static class Node<E> {
         private final E value;
         private Node<E> nextNode;
