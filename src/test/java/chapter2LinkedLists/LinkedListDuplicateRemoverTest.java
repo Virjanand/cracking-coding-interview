@@ -1,8 +1,11 @@
 package chapter2LinkedLists;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.LinkedList;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -10,14 +13,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LinkedListDuplicateRemoverTest {
 
-    @Test
-    void removeDuplicatesInNTimeAndNSpace() {
-        LinkedList<String> linkedList = new LinkedList<>(asList("a", "a"));
-        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover();
+    private static Stream<Arguments> inputAndExpectedLinkedLists() {
+        return Stream.of(
+                Arguments.of(new LinkedList<>(asList("a", "a")), new LinkedList<>(singletonList("a"))),
+                Arguments.of(new LinkedList<>(asList("a", "b")), new LinkedList<>(asList("a", "b")))
+        );
+    }
 
-        duplicateRemover.removeDuplicates(linkedList);
+    @ParameterizedTest(name = "{0} -> {1}")
+    @MethodSource("inputAndExpectedLinkedLists")
+    void removeDuplicatesInNTimeAndNSpace(LinkedList<String> inputLinkedList, LinkedList<String> expectedLinkedList) {
+        LinkedList<String> linkedList = inputLinkedList;
+        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
 
-        LinkedList<String> expectedLinkedList = new LinkedList<>(singletonList("a"));
+        duplicateRemover.removeDuplicates();
+
         assertThat(linkedList).isEqualTo(expectedLinkedList);
     }
 
