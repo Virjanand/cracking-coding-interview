@@ -6,7 +6,6 @@ public class LinkedListDuplicateRemover {
     private final LinkedList<String> linkedList;
 
     public LinkedListDuplicateRemover(LinkedList<String> linkedList) {
-
         this.linkedList = linkedList;
     }
 

@@ -16,7 +16,8 @@ public class LinkedListDuplicateRemoverTest {
     private static Stream<Arguments> inputAndExpectedLinkedLists() {
         return Stream.of(
                 Arguments.of(new LinkedList<>(asList("a", "a")), new LinkedList<>(singletonList("a"))),
-                Arguments.of(new LinkedList<>(asList("a", "b")), new LinkedList<>(asList("a", "b")))
+                Arguments.of(new LinkedList<>(asList("a", "b")), new LinkedList<>(asList("a", "b"))),
+                Arguments.of(new LinkedList<>(asList("a", "b", "a")), new LinkedList<>(asList("a", "b")))
         );
     }
 
