@@ -23,12 +23,11 @@ public class LinkedListDuplicateRemoverTest {
     @ParameterizedTest(name = "{0} -> {1}")
     @MethodSource("inputAndExpectedLinkedLists")
     void removeDuplicatesInNTimeAndNSpace(LinkedList<String> inputLinkedList, LinkedList<String> expectedLinkedList) {
-        LinkedList<String> linkedList = inputLinkedList;
-        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
+        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(inputLinkedList);
 
         duplicateRemover.removeDuplicates();
 
-        assertThat(linkedList).isEqualTo(expectedLinkedList);
+        assertThat(inputLinkedList).isEqualTo(expectedLinkedList);
     }
 
 }

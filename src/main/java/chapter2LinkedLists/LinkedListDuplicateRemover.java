@@ -3,7 +3,7 @@ package chapter2LinkedLists;
 import java.util.LinkedList;
 
 public class LinkedListDuplicateRemover {
-    private LinkedList<String> linkedList;
+    private final LinkedList<String> linkedList;
 
     public LinkedListDuplicateRemover(LinkedList<String> linkedList) {
 
