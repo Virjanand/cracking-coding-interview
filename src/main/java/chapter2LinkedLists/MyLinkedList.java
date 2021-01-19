@@ -2,7 +2,7 @@ package chapter2LinkedLists;
 
 public class MyLinkedList<E> {
 
-    private Node<E> firstNode;
+    private MyLinkedListNode<E> firstNode;
 
     public void add(E element) {
         if (isFirstNodeNotYetSet()) {
@@ -17,19 +17,19 @@ public class MyLinkedList<E> {
     }
 
     private void setFirstNode(E element) {
-        firstNode = new Node<>(element);
+        firstNode = new MyLinkedListNode<>(element);
     }
 
     private void addNodeAtTheEnd(E element) {
-        Node<E> currentNode = firstNode;
+        MyLinkedListNode<E> currentNode = firstNode;
         while (currentNode.getNextNode() != null) {
             currentNode = currentNode.getNextNode();
         }
-        currentNode.setNextNode(new Node<>(element));
+        currentNode.setNextNode(new MyLinkedListNode<>(element));
     }
 
     public E get(int index) {
-        Node<E> currentNode = firstNode;
+        MyLinkedListNode<E> currentNode = firstNode;
         for (int i = 0; i < index; i++) {
             currentNode = currentNode.getNextNode();
         }
@@ -37,7 +37,7 @@ public class MyLinkedList<E> {
     }
 
     public boolean contains(E element) {
-        Node<E> currentNode = firstNode;
+        MyLinkedListNode<E> currentNode = firstNode;
         do {
             if (currentNode.getValue().equals(element)) {
                 return true;
@@ -48,8 +48,8 @@ public class MyLinkedList<E> {
     }
 
     public void delete(E element) {
-        Node<E> currentNode = firstNode;
-        Node<E> previousNode = null;
+        MyLinkedListNode<E> currentNode = firstNode;
+        MyLinkedListNode<E> previousNode = null;
         do {
             if (currentNode.getValue().equals(element)) {
                 if (previousNode != null) {
@@ -64,24 +64,4 @@ public class MyLinkedList<E> {
         } while (currentNode != null);
     }
 
-    private static class Node<E> {
-        private final E value;
-        private Node<E> nextNode;
-
-        public Node(E value) {
-            this.value = value;
-        }
-
-        public E getValue() {
-            return value;
-        }
-
-        public Node<E> getNextNode() {
-            return nextNode;
-        }
-
-        public void setNextNode(Node<E> node) {
-            nextNode = node;
-        }
-    }
 }
