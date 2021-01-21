@@ -1,8 +1,14 @@
 package chapter2LinkedLists;
 
+import java.util.Objects;
+
 public class MyLinkedList<E> {
 
     private MyLinkedListNode<E> firstNode;
+
+    public MyLinkedListNode<E> getFirstNode() {
+        return firstNode;
+    }
 
     public void add(E element) {
         if (isFirstNodeNotYetSet()) {
@@ -64,4 +70,25 @@ public class MyLinkedList<E> {
         } while (currentNode != null);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyLinkedList<?> that = (MyLinkedList<?>) o;
+        MyLinkedListNode<?> thatNode = that.getFirstNode();
+        MyLinkedListNode<E> thisNode = this.getFirstNode();
+        while (thatNode != null && thisNode != null) {
+            if (!thatNode.equals(thisNode)) {
+                return false;
+            }
+            thatNode = thatNode.getNextNode();
+            thisNode = thisNode.getNextNode();
+        }
+        return thisNode == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstNode);
+    }
 }

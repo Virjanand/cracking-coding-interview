@@ -1,7 +1,6 @@
 package chapter2LinkedLists;
 
 import org.junit.jupiter.api.Test;
-import sun.awt.HKSCS;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
