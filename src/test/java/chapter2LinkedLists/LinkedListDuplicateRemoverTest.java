@@ -15,10 +15,10 @@ public class LinkedListDuplicateRemoverTest {
 
     private static Stream<Arguments> inputAndExpectedLinkedLists() {
         return Stream.of(
-                Arguments.of(createLinkedList(asList("a", "a")), createLinkedList(singletonList("a"))),
-                Arguments.of(createLinkedList(asList("a", "b")), createLinkedList(asList("a", "b"))),
-                Arguments.of(createLinkedList(asList("a", "b", "a")), createLinkedList(asList("a", "b"))),
-                Arguments.of(createLinkedList(asList("a", "b", "b", "a", "c")), createLinkedList(asList("a", "b", "c")))
+                Arguments.of((asList("a", "a")), (singletonList("a"))),
+                Arguments.of((asList("a", "b")), (asList("a", "b"))),
+                Arguments.of((asList("a", "b", "a")), (asList("a", "b"))),
+                Arguments.of((asList("a", "b", "b", "a", "c")), asList("a", "b", "c"))
         );
     }
 
@@ -32,11 +32,12 @@ public class LinkedListDuplicateRemoverTest {
 
     @ParameterizedTest(name = "{0} -> {1}")
     @MethodSource("inputAndExpectedLinkedLists")
-    void removeDuplicatesInNTimeAndNSpace(MyLinkedList<String> inputLinkedList, MyLinkedList<String> expectedLinkedList) {
-        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(inputLinkedList);
+    void removeDuplicatesInNTimeAndNSpace(List<String> inputLinkedList, List<String> expectedLinkedList) {
+        MyLinkedList<String> linkedList = createLinkedList(inputLinkedList);
+        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
 
         duplicateRemover.removeDuplicatesInNTimeNSpace();
 
-        assertThat(inputLinkedList).isEqualTo(expectedLinkedList);
+        assertThat(linkedList).isEqualTo(createLinkedList(expectedLinkedList));
     }
 }

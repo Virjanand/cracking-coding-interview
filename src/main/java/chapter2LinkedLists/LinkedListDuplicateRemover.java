@@ -12,17 +12,17 @@ public class LinkedListDuplicateRemover {
 
     public void removeDuplicatesInNTimeNSpace() {
         MyLinkedListNode<String> currentNode = linkedList.getFirstNode();
-        Set<String> visitedElements = new HashSet<>();
+        Set<MyLinkedListNode<String>> visitedElements = new HashSet<>();
+        visitedElements.add(currentNode);
         while (currentNode != null) {
-            visitedElements.add(currentNode.getValue());
             MyLinkedListNode<String> nextNode = currentNode.getNextNode();
             if (nextNode == null) {
                 return;
             }
-            if (visitedElements.contains(nextNode.getValue())) {
+            if (visitedElements.contains(nextNode)) {
                 currentNode.setNextNode(nextNode.getNextNode());
             } else {
-                visitedElements.add(nextNode.getValue());
+                visitedElements.add(nextNode);
                 currentNode = nextNode;
             }
         }
