@@ -22,11 +22,12 @@ class MyLinkedListNode<E> {
         nextNode = node;
     }
 
-    void removeNextNode() {
+    MyLinkedListNode<E> removeNextNode() {
         MyLinkedListNode<E> nextNode = this.getNextNode();
         if (nextNode != null) {
             this.setNextNode(nextNode.getNextNode());
         }
+        return this;
     }
 
     @Override

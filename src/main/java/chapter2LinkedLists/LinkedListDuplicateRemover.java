@@ -35,12 +35,10 @@ public class LinkedListDuplicateRemover {
         while (isNotEndNode(currentNode)) {
             MyLinkedListNode<String> runningNode = currentNode;
             while (runningNode != null) {
-                MyLinkedListNode<String> previousNode = runningNode;
-                runningNode = runningNode.getNextNode();
-                if (currentNode.equals(runningNode)) {
-                    previousNode.removeNextNode();
-                    runningNode = previousNode;
+                if (currentNode.equals(runningNode.getNextNode())) {
+                    runningNode = runningNode.removeNextNode();
                 }
+                runningNode = runningNode.getNextNode();
             }
             currentNode = currentNode.getNextNode();
         }
