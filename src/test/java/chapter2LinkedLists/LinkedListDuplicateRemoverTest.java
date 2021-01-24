@@ -40,4 +40,15 @@ public class LinkedListDuplicateRemoverTest {
 
         assertThat(linkedList).isEqualTo(createLinkedList(expectedLinkedList));
     }
+
+    @ParameterizedTest(name = "{0} -> {1}")
+    @MethodSource("inputAndExpectedLinkedLists")
+    void removeDuplicatesInNSquaredTimeAndO1Space(List<String> inputLinkedList, List<String> expectedLinkedList) {
+        MyLinkedList<String> linkedList = createLinkedList(inputLinkedList);
+        LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
+
+        duplicateRemover.removeDuplicatesInNSquaredTimeO1Space();
+
+        assertThat(linkedList).isEqualTo(createLinkedList(expectedLinkedList));
+    }
 }

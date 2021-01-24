@@ -22,6 +22,13 @@ class MyLinkedListNode<E> {
         nextNode = node;
     }
 
+    void removeNextNode() {
+        MyLinkedListNode<E> nextNode = this.getNextNode();
+        if (nextNode != null) {
+            this.setNextNode(nextNode.getNextNode());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

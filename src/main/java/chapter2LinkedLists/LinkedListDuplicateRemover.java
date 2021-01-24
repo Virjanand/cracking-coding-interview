@@ -14,17 +14,36 @@ public class LinkedListDuplicateRemover {
         MyLinkedListNode<String> currentNode = linkedList.getFirstNode();
         Set<MyLinkedListNode<String>> visitedElements = new HashSet<>();
         visitedElements.add(currentNode);
-        while (currentNode != null) {
+        while (isNotEndNode(currentNode)) {
             MyLinkedListNode<String> nextNode = currentNode.getNextNode();
-            if (nextNode == null) {
-                return;
-            }
             if (visitedElements.contains(nextNode)) {
-                currentNode.setNextNode(nextNode.getNextNode());
+                currentNode.removeNextNode();
             } else {
                 visitedElements.add(nextNode);
                 currentNode = nextNode;
             }
         }
     }
+
+    private boolean isNotEndNode(MyLinkedListNode<String> currentNode) {
+        return currentNode != null && currentNode.getNextNode() != null;
+    }
+
+    public void removeDuplicatesInNSquaredTimeO1Space() {
+        MyLinkedListNode<String> currentNode = linkedList.getFirstNode();
+
+        while (isNotEndNode(currentNode)) {
+            MyLinkedListNode<String> runningNode = currentNode;
+            while (runningNode != null) {
+                MyLinkedListNode<String> previousNode = runningNode;
+                runningNode = runningNode.getNextNode();
+                if (currentNode.equals(runningNode)) {
+                    previousNode.removeNextNode();
+                    runningNode = previousNode;
+                }
+            }
+            currentNode = currentNode.getNextNode();
+        }
+    }
+
 }
