@@ -22,33 +22,25 @@ public class LinkedListDuplicateRemoverTest {
         );
     }
 
-    private static MyLinkedList<String> createLinkedList(List<String> nodes) {
-        MyLinkedList<String> result = new MyLinkedList<>();
-        for (String node : nodes) {
-            result.add(node);
-        }
-        return result;
-    }
-
     @ParameterizedTest(name = "{0} -> {1}")
     @MethodSource("inputAndExpectedLinkedLists")
     void removeDuplicatesInNTimeAndNSpace(List<String> inputLinkedList, List<String> expectedLinkedList) {
-        MyLinkedList<String> linkedList = createLinkedList(inputLinkedList);
+        MyLinkedList<String> linkedList = LinkedListTestUtil.createLinkedList(inputLinkedList);
         LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
 
         duplicateRemover.removeDuplicatesInNTimeNSpace();
 
-        assertThat(linkedList).isEqualTo(createLinkedList(expectedLinkedList));
+        assertThat(linkedList).isEqualTo(LinkedListTestUtil.createLinkedList(expectedLinkedList));
     }
 
     @ParameterizedTest(name = "{0} -> {1}")
     @MethodSource("inputAndExpectedLinkedLists")
     void removeDuplicatesInNSquaredTimeAndO1Space(List<String> inputLinkedList, List<String> expectedLinkedList) {
-        MyLinkedList<String> linkedList = createLinkedList(inputLinkedList);
+        MyLinkedList<String> linkedList = LinkedListTestUtil.createLinkedList(inputLinkedList);
         LinkedListDuplicateRemover duplicateRemover = new LinkedListDuplicateRemover(linkedList);
 
         duplicateRemover.removeDuplicatesInNSquaredTimeO1Space();
 
-        assertThat(linkedList).isEqualTo(createLinkedList(expectedLinkedList));
+        assertThat(linkedList).isEqualTo(LinkedListTestUtil.createLinkedList(expectedLinkedList));
     }
 }
