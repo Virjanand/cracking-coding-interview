@@ -70,6 +70,19 @@ public class MyLinkedList<E> {
         } while (currentNode != null);
     }
 
+    public int size() {
+        if (firstNode == null) {
+            return 0;
+        }
+        MyLinkedListNode<E> nextNode = firstNode;
+        int n = 1;
+        while (nextNode.getNextNode() != null) {
+            n++;
+            nextNode = nextNode.getNextNode();
+        }
+        return n;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
